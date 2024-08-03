@@ -35,25 +35,6 @@
             color: #e74c3c;
             animation: fadeInDown 2s;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #e74c3c;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #f39c12;
-        }
         main {
             flex: 1;
             display: flex;
@@ -62,6 +43,19 @@
             justify-content: center;
             padding: 2em;
             animation: fadeIn 3s;
+        }
+        .about {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 1em;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
         footer {
             background: #111;
@@ -95,18 +89,12 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                <li><a href="iletisim.html">İletişim</a></li>
-            </ul>
-        </nav>
         <h1>Hakkımızda</h1>
     </header>
     
     <main>
         <section class="about">
+            <img src="https://i.imgur.com/FUKpAru_d.webp?maxwidth=760&fidelity=grand" alt="Geliştirici Fotoğrafı">
             <h2>Geliştirici</h2>
             <p>Geliştirici: Developer</p>
             <p>Hakkımızda: Yenilikçi teknolojilere olan tutkumuzla, kullanıcılara en iyi deneyimi sunmak için çalışıyoruz. Ekibimiz, projelerde mükemmeliyet anlayışını benimseyerek, kaliteli ve güvenilir çözümler üretmektedir.</p>
@@ -114,7 +102,7 @@
     </main>
     
     <footer>
-        <p>&copy; 2024 [Şirket Adı]. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2024 Thonderz. Tüm Hakları Saklıdır.</p>
     </footer>
 </body>
 </html>
