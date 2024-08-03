@@ -3,42 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Game Themed Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
+            background: #111;
+            width: 100%;
             padding: 1em 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #e74c3c;
         }
         main {
-            margin: 2em;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2em;
+        }
+        main h2 {
+            margin-bottom: 1em;
+            font-size: 2em;
+            color: #f39c12;
+        }
+        main p {
+            font-size: 1.2em;
+            max-width: 600px;
         }
         footer {
-            background-color: #4CAF50;
-            color: white;
+            background: #111;
+            width: 100%;
             padding: 1em 0;
             position: fixed;
             bottom: 0;
-            width: 100%;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
+        }
+        footer p {
+            margin: 0;
+            font-size: 1em;
+            color: #e74c3c;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My GitHub Page</h1>
+        <h1>Game Zone</h1>
     </header>
     <main>
-        <p>This is a simple page hosted on GitHub Pages.</p>
+        <h2>Welcome to the Ultimate Gaming Experience</h2>
+        <p>Explore our latest games, join the community, and stay up-to-date with the newest trends in the gaming world. Level up your gaming skills with us!</p>
     </main>
     <footer>
-        <p>&copy; 2024 My GitHub Page</p>
+        <p>&copy; 2024 Game Zone. All rights reserved.</p>
     </footer>
 </body>
 </html>
