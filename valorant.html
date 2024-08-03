@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant VP Hilesi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -27,7 +26,7 @@
             padding: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Partiküllerin altında kalmasını sağlar */
         }
 
         h1 {
@@ -54,7 +53,6 @@
             background: #333;
             color: #fff;
             margin-bottom: 10px;
-            font-family: 'Roboto', sans-serif;
         }
 
         .form-group.inline {
@@ -80,7 +78,6 @@
             position: relative;
             overflow: hidden;
             transition: background 0.3s, transform 0.3s;
-            font-family: 'Roboto', sans-serif;
         }
 
         button:disabled {
@@ -136,7 +133,6 @@
             border: 1px solid #444;
             padding: 10px;
             text-align: center;
-            font-family: 'Roboto', sans-serif;
         }
 
         .code-table th {
@@ -155,7 +151,7 @@
         .timer-bar {
             width: 100%;
             height: 25px;
-            background: #333;
+            background: #333; /* Arka plan rengi */
             border-radius: 5px;
             overflow: hidden;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
@@ -164,7 +160,7 @@
 
         .timer-progress {
             height: 100%;
-            background: linear-gradient(to right, #ff4655, #e02d3e);
+            background: linear-gradient(to right, #ff4655, #e02d3e); /* Valorant renkleri */
             width: 0;
             transition: width 1s linear;
             position: absolute;
@@ -176,7 +172,6 @@
             text-align: center;
             margin-top: 5px;
             font-size: 18px;
-            font-family: 'Roboto', sans-serif;
         }
 
         #particles-js {
@@ -188,6 +183,7 @@
             z-index: 0;
         }
 
+        /* Alert Styles */
         .alert {
             position: fixed;
             top: 20px;
@@ -201,7 +197,6 @@
             display: none;
             z-index: 1000;
             font-size: 16px;
-            font-family: 'Roboto', sans-serif;
         }
 
         .alert.show {
@@ -224,27 +219,11 @@
             to { opacity: 0; }
         }
 
+        /* Footer Styles */
         .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #1a1a1a;
-            color: #ccc;
             text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .footer a {
-            color: #ff4655;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
+            margin-top: 20px;
+            color: #ccc;
         }
     </style>
 </head>
@@ -278,7 +257,7 @@
                     <option value="7300">7300 VP</option>
                 </select>
             </div>
-            <button type="submit" id="submitButton" disabled>Gönder</button>
+            <button type="submit" id="submitButton">Gönder</button>
             <div id="message" class="form-message"></div>
         </form>
         <div class="timer-container">
@@ -298,115 +277,81 @@
                     </tr>
                 </thead>
                 <tbody id="codeList">
+                    <!-- Kodlar buraya eklenecek -->
                 </tbody>
             </table>
         </div>
-    </div>
-    <div id="alert" class="alert"></div>
-    <div class="footer">
-        <p>© 2024 Valorant VP Hilesi. Tüm hakları saklıdır. <a href="#">İletişim</a> | <a href="#">Gizlilik Politikası</a></p>
+        <div id="alert" class="alert"></div>
+        <div class="footer">
+            &copy; 2024 Valorant VP Hilesi. Tüm hakları saklıdır.
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        let lastGeneratedCodeTime = 0;
+        let lastSubmissionTime = 0;
         const cooldownTime = 60000; // 1 dakika
-        let isTimerRunning = false;
 
-        document.getElementById('vpForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        function updateTimer() {
+            const currentTime = Date.now();
+            const elapsedTime = currentTime - lastSubmissionTime;
 
+            if (elapsedTime < cooldownTime) {
+                const remainingTime = cooldownTime - elapsedTime;
+                const minutes = Math.floor(remainingTime / 60000);
+                const seconds = Math.floor((remainingTime % 60000) / 1000);
+                document.getElementById('timerText').innerText = `Kalan Süre: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                document.getElementById('timerProgress').style.width = `${(elapsedTime / cooldownTime) * 100}%`;
+                document.getElementById('submitButton').disabled = true;
+                setTimeout(updateTimer, 1000);
+            } else {
+                document.getElementById('timerText').innerText = 'Süre doldu';
+                document.getElementById('timerProgress').style.width = '100%';
+                document.getElementById('submitButton').disabled = false;
+            }
+        }
+
+        document.getElementById('vpForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const currentTime = Date.now();
+            lastSubmissionTime = currentTime;
+            updateTimer();
+
+            // Kodun tabloya eklenmesi
             const username = document.getElementById('username').value;
-            const riotId = document.getElementById('riotId').value;
             const platform = document.getElementById('platform').value;
             const amount = document.getElementById('amount').value;
-
-            if (!username || !riotId || !platform || !amount) {
-                showAlert('Lütfen tüm alanları doldurunuz.');
-                return;
-            }
-
-            const currentTime = Date.now();
-            if (currentTime - lastGeneratedCodeTime < cooldownTime) {
-                showAlert('Bu kodu oluşturmak için biraz beklemelisiniz.');
-                return;
-            }
-
-            lastGeneratedCodeTime = currentTime;
-
-            if (!isTimerRunning) {
-                startTimer();
-            }
-
             const code = generateCode();
-            addCodeToTable(username, amount, code);
-            showAlert('Kodunuz başarıyla gönderildi.');
+
+            const table = document.getElementById('codeList');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${username}</td>
+                <td>${amount}</td>
+                <td>${code}</td>
+            `;
+            table.appendChild(row);
+
+            // Gönderim mesajı
+            const message = document.getElementById('message');
+            message.innerText = 'Başarıyla gönderildi!';
+            setTimeout(() => {
+                message.innerText = '';
+            }, 3000);
         });
-
-        function startTimer() {
-            isTimerRunning = true;
-            const timerBar = document.getElementById('timerProgress');
-            const timerText = document.getElementById('timerText');
-            const submitButton = document.getElementById('submitButton');
-            let startTime = Date.now();
-            let endTime = startTime + cooldownTime; // 1 dakika
-
-            submitButton.disabled = true;
-
-            const interval = setInterval(() => {
-                const now = Date.now();
-                const remainingTime = endTime - now;
-
-                if (remainingTime <= 0) {
-                    clearInterval(interval);
-                    timerBar.style.width = '0';
-                    timerText.textContent = 'Kalan Süre: 00:00';
-                    isTimerRunning = false;
-                    submitButton.disabled = false; // Butonu aktif hale getir
-                    return;
-                }
-
-                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-
-                timerText.textContent = `Kalan Süre: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                timerBar.style.width = `${(100 - (remainingTime / cooldownTime) * 100)}%`;
-            }, 1000);
-        }
 
         function generateCode() {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
             let result = 'RA-';
-            const length = 10;
-            for (let i = 0; i < length; i++) {
+            for (let i = 0; i < 10; i++) {
                 result += characters.charAt(Math.floor(Math.random() * characters.length));
             }
             return result;
         }
 
-        function addCodeToTable(username, amount, code) {
-            const codeList = document.getElementById('codeList');
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${username}</td>
-                <td>${amount} VP</td>
-                <td>${code}</td>
-            `;
-            codeList.appendChild(row);
-        }
-
-        function showAlert(message) {
-            const alertBox = document.getElementById('alert');
-            alertBox.textContent = message;
-            alertBox.classList.add('show');
-            setTimeout(() => {
-                alertBox.classList.remove('show');
-            }, 3000);
-        }
-
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 80,
+                    "value": 100,
                     "density": {
                         "enable": true,
                         "value_area": 800
@@ -420,14 +365,11 @@
                     "stroke": {
                         "width": 0,
                         "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
                     }
                 },
                 "opacity": {
                     "value": 0.5,
-                    "random": false,
+                    "random": true,
                     "anim": {
                         "enable": false,
                         "speed": 1,
@@ -446,9 +388,9 @@
                     }
                 },
                 "line_linked": {
-                    "enable": true,
+                    "enable": false,
                     "distance": 150,
-                    "color": "#ff4655",
+                    "color": "#ffffff",
                     "opacity": 0.4,
                     "width": 1
                 },
@@ -479,6 +421,31 @@
                         "mode": "push"
                     },
                     "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
                 }
             },
             "retina_detect": true
