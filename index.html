@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Themed Page</title>
+    <title>Game Zone</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
         body {
             font-family: 'Press Start 2P', cursive;
             background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -61,6 +60,17 @@
             color: #e74c3c;
             animation: fadeInUp 2s;
         }
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin: 1em 0;
+            display: block;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #f39c12;
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -73,58 +83,19 @@
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .particle {
-            position: absolute;
-            background: #e74c3c;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: moveParticle 10s infinite;
-        }
-        @keyframes moveParticle {
-            from {
-                transform: translate3d(0, 0, 0);
-                opacity: 1;
-            }
-            to {
-                transform: translate3d(calc(100vw - 50px), calc(100vh - 50px), 0);
-                opacity: 0;
-            }
-        }
-        .particle:nth-child(2) {
-            background: #f39c12;
-            animation-duration: 12s;
-            animation-delay: -2s;
-        }
-        .particle:nth-child(3) {
-            background: #8e44ad;
-            animation-duration: 8s;
-            animation-delay: -4s;
-        }
-        .particle:nth-child(4) {
-            background: #3498db;
-            animation-duration: 6s;
-            animation-delay: -6s;
-        }
-        .particle:nth-child(5) {
-            background: #2ecc71;
-            animation-duration: 14s;
-            animation-delay: -8s;
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>Game Zone</h1>
     </header>
-    <main></main>
+    <main>
+        <a href="action.html">Action Games</a>
+        <a href="adventure.html">Adventure Games</a>
+        <a href="puzzle.html">Puzzle Games</a>
+    </main>
     <footer>
         <p>&copy; 2024 Game Zone. All rights reserved.</p>
     </footer>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
 </body>
 </html>
