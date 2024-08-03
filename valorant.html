@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant VP Hilesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #0f0f0f;
             color: #fff;
             display: flex;
@@ -26,13 +27,14 @@
             padding: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             position: relative;
-            z-index: 1; /* Partiküllerin altında kalmasını sağlar */
+            z-index: 1;
         }
 
         h1 {
             color: #ff4655;
             text-align: center;
             margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .form-group {
@@ -43,6 +45,7 @@
             display: block;
             margin-bottom: 5px;
             color: #ccc;
+            font-weight: 500;
         }
 
         input[type="text"], select {
@@ -53,6 +56,7 @@
             background: #333;
             color: #fff;
             margin-bottom: 10px;
+            font-size: 16px;
         }
 
         .form-group.inline {
@@ -78,6 +82,7 @@
             position: relative;
             overflow: hidden;
             transition: background 0.3s, transform 0.3s;
+            font-weight: 500;
         }
 
         button:disabled {
@@ -111,6 +116,7 @@
             color: #ff4655;
             text-align: center;
             margin-top: 10px;
+            font-weight: 500;
         }
 
         .code-section {
@@ -121,6 +127,7 @@
             color: #ff4655;
             margin-bottom: 10px;
             text-align: center;
+            font-weight: 500;
         }
 
         .code-table {
@@ -133,6 +140,7 @@
             border: 1px solid #444;
             padding: 10px;
             text-align: center;
+            font-size: 16px;
         }
 
         .code-table th {
@@ -151,7 +159,7 @@
         .timer-bar {
             width: 100%;
             height: 25px;
-            background: #333; /* Arka plan rengi */
+            background: #333;
             border-radius: 5px;
             overflow: hidden;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
@@ -160,7 +168,7 @@
 
         .timer-progress {
             height: 100%;
-            background: linear-gradient(to right, #ff4655, #e02d3e); /* Valorant renkleri */
+            background: linear-gradient(to right, #ff4655, #e02d3e);
             width: 0;
             transition: width 1s linear;
             position: absolute;
@@ -197,6 +205,7 @@
             display: none;
             z-index: 1000;
             font-size: 16px;
+            font-weight: 500;
         }
 
         .alert.show {
@@ -279,95 +288,8 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         let lastGeneratedCodeTime = 0;
-        const cooldownTime = 60000; // 1 dakika
-
-        let isTimerRunning = false; // Zamanlayıcının çalışıp çalışmadığını kontrol et
-
-        document.getElementById('vpForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const username = document.getElementById('username').value;
-            const riotId = document.getElementById('riotId').value;
-            const amount = document.getElementById('amount').value;
-            const message = document.getElementById('message');
-            const submitButton = document.getElementById('submitButton');
-            const timerBar = document.getElementById('timerBar');
-            const timerProgress = document.getElementById('timerProgress');
-            const timerText = document.getElementById('timerText');
-            const alertBox = document.getElementById('alert');
-
-            const currentTime = Date.now();
-
-            if (currentTime - lastGeneratedCodeTime < cooldownTime) {
-                message.textContent = 'Kod alım süresi dolmadı. Lütfen daha sonra tekrar deneyin.';
-                return;
-            }
-
-            lastGeneratedCodeTime = currentTime;
-
-            if (isTimerRunning) {
-                return; // Eğer zamanlayıcı çalışıyorsa, form gönderimini engelle
-            }
-
-            isTimerRunning = true; // Zamanlayıcıyı başlat
-
-            // Zamanlayıcı
-            const duration = 30; // saniye
-            const startTime = Date.now();
-            const interval = setInterval(function() {
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                const remainingTime = duration - elapsedTime;
-                const progress = Math.max(0, Math.min(100, (elapsedTime / duration) * 100));
-
-                timerProgress.style.width = progress + '%';
-                timerText.textContent = 'Kalan Süre: ' + Math.ceil(remainingTime) + ' saniye';
-
-                if (remainingTime <= 0) {
-                    clearInterval(interval);
-                    timerProgress.style.width = '100%';
-                    timerText.textContent = 'Kalan Süre: 00:00';
-                    showAlert('Kod başarıyla gönderildi!');
-                    isTimerRunning = false; // Zamanlayıcı bitti
-                    addCodeToTable(username, amount); // Zamanlayıcı bitince kod ekle
-                }
-            }, 1000);
-
-            // Gönder butonunu devre dışı bırak ve zamanlayıcı süresi kadar bekle
-            submitButton.disabled = true;
-            setTimeout(() => {
-                submitButton.disabled = false;
-                message.textContent = '';
-            }, cooldownTime);
-
-            function addCodeToTable(username, amount) {
-                const code = generateRandomCode();
-                const codeTable = document.getElementById('codeList');
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${username}</td><td>${amount} VP</td><td>${code}</td>`;
-                codeTable.appendChild(row);
-            }
-
-            function generateRandomCode() {
-                const prefix = 'RA-';
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                let code = prefix;
-                for (let i = 0; i < 15; i++) {
-                    code += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                return code;
-            }
-
-            function showAlert(message) {
-                alertBox.textContent = message;
-                alertBox.classList.add('show');
-                setTimeout(() => {
-                    alertBox.classList.add('hide');
-                    setTimeout(() => {
-                        alertBox.classList.remove('show', 'hide');
-                    }, 500); // Hide animation süresi
-                }, 3000); // Mesajın ekranda kalma süresi
-            }
-        });
+        const cooldownTime = 3600000; // 1 saat (3600 saniye)
+        const alertBox = document.getElementById('alert');
 
         particlesJS('particles-js', {
             "particles": {
@@ -385,7 +307,7 @@
                     "type": "circle",
                     "stroke": {
                         "width": 0,
-                        "color": "#ff4655"
+                        "color": "#000000"
                     },
                     "polygon": {
                         "nb_sides": 5
@@ -405,7 +327,7 @@
                     "value": 3,
                     "random": true,
                     "anim": {
-                        "enable": false,
+                        "enable": true,
                         "speed": 40,
                         "size_min": 0.1,
                         "sync": false
@@ -437,11 +359,11 @@
                 "detect_on": "canvas",
                 "events": {
                     "onhover": {
-                        "enable": false,
+                        "enable": true,
                         "mode": "repulse"
                     },
                     "onclick": {
-                        "enable": false,
+                        "enable": true,
                         "mode": "push"
                     },
                     "resize": true
@@ -449,6 +371,92 @@
             },
             "retina_detect": true
         });
+
+        document.getElementById('vpForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const now = Date.now();
+            if (now - lastGeneratedCodeTime < cooldownTime) {
+                showAlert('Bir sonraki gönderim için süre dolmadı.');
+                return;
+            }
+
+            lastGeneratedCodeTime = now;
+
+            const username = document.getElementById('username').value;
+            const riotId = document.getElementById('riotId').value;
+            const platform = document.getElementById('platform').value;
+            const amount = document.getElementById('amount').value;
+
+            // Simulate code generation and display
+            const code = generateRandomCode();
+            addCodeToTable(username, amount, code);
+
+            // Display success message
+            showAlert('Başarıyla gönderildi.');
+
+            // Start timer
+            startTimer();
+        });
+
+        function generateRandomCode() {
+            const length = 8;
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                code += chars[randomIndex];
+            }
+            return code;
+        }
+
+        function addCodeToTable(username, amount, code) {
+            const tableBody = document.getElementById('codeList');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${username}</td>
+                <td>${amount}</td>
+                <td>${code}</td>
+            `;
+            tableBody.appendChild(row);
+        }
+
+        function showAlert(message) {
+            alertBox.textContent = message;
+            alertBox.classList.add('show');
+            setTimeout(() => {
+                alertBox.classList.add('hide');
+                setTimeout(() => {
+                    alertBox.classList.remove('show', 'hide');
+                }, 500);
+            }, 3000);
+        }
+
+        function startTimer() {
+            const timerBar = document.getElementById('timerProgress');
+            const timerText = document.getElementById('timerText');
+            let startTime = Date.now();
+            let endTime = startTime + cooldownTime;
+            
+            function updateTimer() {
+                const now = Date.now();
+                const remaining = endTime - now;
+                const seconds = Math.max(Math.floor(remaining / 1000), 0);
+                const minutes = Math.floor(seconds / 60);
+                const displaySeconds = seconds % 60;
+                timerText.textContent = `Kalan Süre: ${minutes}:${displaySeconds < 10 ? '0' : ''}${displaySeconds}`;
+                const progress = (remaining / cooldownTime) * 100;
+                timerBar.style.width = `${progress}%`;
+
+                if (remaining <= 0) {
+                    timerBar.style.width = '0%';
+                    timerText.textContent = 'Kalan Süre: 00:00';
+                    clearInterval(timerInterval);
+                }
+            }
+
+            updateTimer();
+            const timerInterval = setInterval(updateTimer, 1000);
+        }
     </script>
 </body>
 </html>
