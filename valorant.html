@@ -283,13 +283,13 @@
         </div>
         <div id="alert" class="alert"></div>
         <div class="footer">
-            &copy; 2024 Valorant VP Hilesi. Tüm hakları saklıdır. <href>SA</href>
+            &copy; 2024 Valorant VP Hilesi. Tüm hakları saklıdır.
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         let lastSubmissionTime = 0;
-        const cooldownTime = 60000; // 1 dakika
+        const cooldownTime = 3600000; // 1 saat (1 saat = 3600000 ms)
 
         function updateTimer() {
             const currentTime = Date.now();
@@ -450,6 +450,9 @@
             },
             "retina_detect": true
         });
+
+        // Sayacı başlatma
+        updateTimer();
     </script>
 </body>
 </html>
