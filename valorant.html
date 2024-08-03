@@ -2,528 +2,264 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>Brawl Stars Elmas Hilesi 2024</title>
-	<!-- Google Fonts -->
-	<link href="images/css8a7c8a7c8a7c8a7c.css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<!-- CSS -->
-	<link href="images/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link href="images/bootstrap.min.css" rel="stylesheet">  
-	<link href="images/animate.css" rel="stylesheet">
-	<link href="images/sweetalert2.min.css" rel="stylesheet">
-	<link href="images/magnific-popup.css" rel="stylesheet">
-	<link href="images/fancyselect.css" rel="stylesheet">
-	<link href="images/style.css" rel="stylesheet">	
-	<link href="images/custom-css.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Brawl Stars Elmas Hilesi 2024</title>
+    <style>
+        body {
+            font-family: 'Bree Serif', serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
 
+        header, footer {
+            background-color: #FF0000; /* Kırmızı renk */
+            text-align: center;
+            padding: 20px;
+        }
 
+        .logo-img {
+            width: 150px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+        }
+
+        .generator-wrapper {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .panel-box-wrapper {
+            background: linear-gradient(to right, #FF0000, #FFA500); /* Brawl Stars renkleri */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .status-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .generator-button {
+            display: inline-block;
+            background: #FF0000; /* Kırmızı renk */
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .generator-button:hover {
+            background: #FFA500; /* Sarı renk */
+        }
+
+        h1 {
+            color: #FFA500; /* Sarı renk */
+        }
+
+        .resources-select-wrapper {
+            padding: 20px;
+        }
+
+        .resource-img {
+            width: 20px;
+        }
+
+        .gold-loadbar, .gems-loadbar {
+            width: 100%;
+            background: #FFA500;
+            height: 10px;
+            border-radius: 5px;
+        }
+
+        .generator-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #FFA500;
+            margin-bottom: 10px;
+        }
+
+        .switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .onoffswitch-label {
+            background: #FF0000; /* Kırmızı renk */
+        }
+
+        .onoffswitch-switch {
+            background: #FFFFFF;
+        }
+
+        .footer-text {
+            color: #FFFFFF;
+        }
+    </style>
 </head>
-<link href='https://fonts.google.com/specimen/Bree+Serif?selection.family=Bree+Serif' rel='stylesheet' type='text/css'>
-      <style>
-        body, h1, h2, h3, h4, h5, h6, p, a, span {
-          font-family: 'Bree+Serif', sans-serif;
-          font-weight: bold;
-        }
-      </style>
+
 <body>
-	<header>
-		<div class="branding-wrapper">
-			<img class="logo-img" src="images/logo.png">
-		</div>
-	</header>
-	<div class="main-wrapper">		
-		<div class="row">
-
-			<div class="generator-wrapper col-sm-12">		
-				<div class="generator-wrapper-inner panel-box-wrapper same-height-top-panel">
-					<div class="generator-status-panel-wrapper">
-						<div class="status-wrapper">
-							<!--<span class="status-label hide-second">User IP:</span> <span class="status-highlighted hide-second" id="ip"></span><span class="status-separator hide-second">|</span>-->
-							<span class="status-label hide-first">Son güncelleme:</span> <span id="zaman" class="status-highlighted hide-first"></span><span class="status-separator hide-first">|</span>
-							<span class="status-label">Hile durumu:</span> <button><span class="status status-highlighted server-status">Aktif</span></button><span class="status-separator">|</span>
-							<span class="stats">
-								<span class="status-label">Aktif kullanıcı:</span> <span id="online" class="status-highlighted"></span>
-							</span>
-						</div>
-					</div>
-					<div class="panel-overlay"></div>
-					<div id="account-information-wrapper" class="account-information-wrapper">						
-						<div class="account-information-inner-wrapper">
-							<div id="close-account-information-wrapper" class="close-account-information-wrapper"><i class="fa fa-times" aria-hidden="true"></i></div>
-							<h4>Hesap Bilgileri</h4>
-							<div class="account-info-fields-wrapper">
-								<div class="account-username-wrapper">
-									<label class="generator-input-label" for="account-username">Kullanıcı Adı veya ID</label>
-									<input type="text" id="account-username" class="generator-input account-input" placeholder="Kullanıcı Adı veya ID">
-								</div>	
-								<div class="account-platform-wrapper">
-									<label class="generator-input-label" for="account-platform">Platform:</label>
-									<select id="account-platform" class="generator-input f-s">																					<option value="Tümü">Tümü</option>			
-										<option value="Android">Android</option>
-										<option value="iOS">iOS</option>
-										<option value="PC">PC</option>		
-									</select>
-								</div>		
-							</div>
-							<div class="generator-button-wrapper">
-								<div class="generator-button-inner-wrapper second-step-inner-wrapper">
-									<div class="generator-button-overlay"></div>
-									<a id="second-step-button" class="generator-button second-step-button"><span class="generator-button-text">OK</span></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="panel-content">
-						<div class="row">
-							<div class="col-md-12">	
-								<div class="generator-header">
-									<h1>Brawl Stars Elmas Hilesi 2024</h1>
-								</div>		
-							</div>
-						</div>						
-						<div id="resources-select-wrapper" class="resources-select-wrapper">
-							<div class="single-resource-wrapper row">
-								<div class="gold-select-wrapper">
-									<div class="col-xs-1 no-padding-right responsive-button-wrapper">
-										<div class="value-button-wrapper">	
-											<div id="decrease-gold" class="decrease-button value-button">-</div>
-										</div>										
-									</div>
-									<div class="col-xs-10 responsive-value-wrapper">
-										<h3 class="resources-title">Elmas</h3>
-										<div id="gold-amount-wrapper" class="selected-amount-wrapper">
-											<img class="resource-img" style="top:13px" src="images/elmas.png">
-											<div id="gold-amount" class="selected-amount-value">1000</div>
-											<div class="max-amount max-amount-coins">MAX</div>
-										</div>	
-										<div id="progressBar" class="gold-loadbar"><div></div></div>
-									</div>
-									<div class="col-xs-1 no-padding-left responsive-button-wrapper">
-										<div class="value-button-wrapper">	
-											<div id="increase-gold" class="increase-button value-button">+</div>
-										</div>	
-									</div>	
-								</div>				
-							</div>
-							<div class="single-resource-wrapper row">
-								<div class="gems-select-wrapper">
-									<div class="col-xs-1 responsive-button-wrapper no-padding-right">
-										<div class="value-button-wrapper">	
-											<div id="decrease-gems" class="decrease-button value-button">-</div>	
-										</div>
-									</div>
-									<div class="col-xs-10 responsive-value-wrapper">
-										<h3 class="resources-title">Altın</h3>
-										<div id="gems-amount-wrapper" class="selected-amount-wrapper">
-											<img class="resource-img" style="top:13px" src="images/altin.png">
-											<div id="gems-amount" class="selected-amount-value">1000</div> 
-											<div class="max-amount max-amount-points">MAX</div>
-										</div>	
-										<div id="progressBarGems" class="gems-loadbar"><div></div></div>
-									</div>
-									<div class="col-xs-1 no-padding-left responsive-button-wrapper">	
-										<div class="value-button-wrapper">	
-											<div id="increase-gems" class="increase-button value-button">+</div>
-										</div>
-									</div>	
-								</div>				
-							</div>
-							<div class="row">
-								<div style="text-align: center;" class="col-md-12 col-sm-12">
-									<div class="switch-wrapper">
-										<div class="onoffswitch">
-											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
-											<label class="onoffswitch-label" for="myonoffswitch">
-												<span class="onoffswitch-inner"></span>
-												<span class="onoffswitch-switch"></span>
-											</label>
-										</div>
-										<p>Anti-Ban koruması</p>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="generator-button-wrapper generator-start-wrapper col-md-12">
-									<div class="generator-button-inner-wrapper">
-										<div class="generator-button-overlay"></div>
-										<a id="first-step-button" class="generator-button first-step-button"><span class="generator-button-text">Gönder</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="processing-wrapper" class="processing-wrapper">
-							<div class="main-console-wrapper">
-								<div class="starting-loading-wrapper">
-									<i class="icon-refresh rotating"></i>
-									<span class="starting-loading-title">Bekleniyor...</span>
-								</div>
-								<div id="human-verification" class="human-verification-wrapper"> <!-- Human Verification Main Wrapper -->
-									<div class="human-verification-inner-wrapper">
-										<h2>Doğrulama Aşaması</h2>
-										<br><br>
-										<p style="color:white;"><span class="badge">! </span> Hileyi bot kullanarak kötüye kullanılmasını önlemek için aşağıdaki doğrula butonuna tıklayarak insan doğrulamasını yapmanız gerekmektedir. Görevler Ücretsizdir.
-
- <span class="badge">! </span></p>
-										<div id="fountainG">
-											<div id="fountainG_1" class="fountainG"></div>
-											<div id="fountainG_2" class="fountainG"></div>
-											<div id="fountainG_3" class="fountainG"></div>
-											<div id="fountainG_4" class="fountainG"></div>
-											<div id="fountainG_5" class="fountainG"></div>
-											<div id="fountainG_6" class="fountainG"></div>
-											<div id="fountainG_7" class="fountainG"></div>
-											<div id="fountainG_8" class="fountainG"></div>
-										</div>
-										
-										
-<div class="list">
-    <a href="https://bynobot.com/cl/i/37dke6" target="_self"><button class="btn btn-warning btn-lg btn-block btn-custom blender-pro-book">DOĞRULA <i class="fa fa-cogs blue-text-color"></i></button></a>
-							</div>
-						
-										</div>
-									</div>									
-								<div class="row first-console-row">
-									<div class="col-sm-6" style="text-align:center;">
-										<div class="console-username-wrapper console-item-wrapper">
-											<div id="console-success-confirmation-username" class="console-success-confirmation top-right"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
-											<h5>ID:</h5>
-											<span id="console-username-value" class="console-item-value"><i class="icon-refresh rotating"></i></span>
-										</div>
-									</div>
-									<div class="col-sm-6" style="text-align:center;">
-										<div class="console-platform-wrapper console-item-wrapper">	
-											<div id="console-success-confirmation-platform" class="console-success-confirmation top-right"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
-											<h5>Platform:</h5>
-											<span id="console-platform-value" class="console-item-value"><i class="icon-refresh rotating"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-6" style="text-align:center;">
-										<div class="console-gold-wrapper console-item-wrapper">
-											<div id="console-success-confirmation-gold" class="console-success-confirmation top-right"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
-											<h5>Elmas:</h5>
-											<div class="console-gold-value-inner-wrapper">
-												<img class="console-resource-img" src="images/elmas.png">
-												<span id="console-gold-value" class="console-item-value console-resource-value">0</span>
-											</div>	
-										</div>
-									</div>
-									<div class="col-sm-6" style="text-align:center;">
-										<div class="console-gems-wrapper console-item-wrapper">
-											<div id="console-success-confirmation-gems" class="console-success-confirmation top-right"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
-											<h5>Altın:</h5>
-											<div class="console-gems-value-inner-wrapper">
-												<img class="console-resource-img" src="images/altin.png">
-												<span id="console-gems-value" class="console-item-value console-resource-value">0</span>
-											</div>											
-										</div>
-									</div>
-								</div>
-								<div class="row last-console-row">
-									<div class="col-sm-12">
-										<div class="console-gpslocation-wrapper console-item-wrapper">
-											<div id="console-success-confirmation-gpslocation" class="console-success-confirmation top-right"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
-											<h5>BONUS Giftcard:</h5>
-											<span id="console-gpshack-value" class="console-item-value"><i class="icon-refresh rotating"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="messages-console-wrapper">
-								<div class="console-message"></div>								
-							</div>
-							<div class="loadbar-console-wrapper">
-								<div id="progressBarConsole" class="console-loadbar"><div></div></div>
-							</div>
-						</div>
-					</div>	
-				</div>	
-			</div>			
-		</div>
-			<div class="instructions-wrapper col-md-12" style="margin-top: 15px;">	
-				<div class="instructions-panel-wrapper col-md-4">
-					<div id="instructions-completion-indicator-step-1" class="instructions-completion-indicator"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-					<h4>Adım 1</h4>
-					<p>Göndermek istediğin elmas miktarını seç ve gönder butonuna bas.</p>
-				</div>
-				<div class="instructions-panel-wrapper col-md-4">
-					<div id="instructions-completion-indicator-step-2" class="instructions-completion-indicator"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-					<h4>Adım 2</h4>
-					<p>Oyundaki ID'ni gir ve oyunu oynadığın platformu seç.</p>
-				</div>
-				<div class="instructions-panel-wrapper col-md-4">
-					<div id="instructions-completion-indicator-step-3" class="instructions-completion-indicator"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-					<h4>Adım 3</h4>
-					<p>Doğrulama adımlarını tamamla ve elmasların keyfini çıkar!</p>
-				</div>
-			</div>
-			
-			<button class="col-md-12" style="background-color: red; font-size: 20px; text-align: center; color: white; margin-bottom: 15px">Doğrulama adımlarını tamamlamaz veya eksik yaparsan elmas gönderimi yapılmaz!</button>
-			
-		<div class="row bottom-row">
-			<div class="recent-activity-wrapper col-sm-12">
-				<div class="recent-activity-inner panel-box-wrapper same-height-top-panel">	
-					<div class="panel-overlay"></div>
-					<div class="panel-content">
-						<div class="panel-title">
-							<h2>Son Gönderimler</h2>
-						</div>
-						
-						<div id="recent-activity" class="recent-activity">
-
-						</div>
-						
-					</div>
-				</div>
-			</div>
-
-			<div class="chat-wrapper col-md-6">
-				<div class="chat-wrapper-inner panel-box-wrapper same-height-bottom-panel">	
-					<div class="panel-overlay"></div>	
-					<div class="panel-content">
-						<div class="panel-title">
-							<h2>Canlı Chat</h2>
-						</div>	
-						<div class="chat-inner-wrapper">
-						    <p>Chat diğer tüm hilelerin ortak konuşma alanıdır.</p>
-							<div class="livechatContainerTop" style=" height: 0px!important; border-top-left-radius: 4px; border-top-right-radius: 4px;">
-								<span class="yellow_text" style="position: relative; bottom: 10px;">
-									Chatroom (<span id="online2"></span>)</span>
-								</div>
-								<div class="livechatContainerCenter">
-									<div id="livechatContainerChat" style="text-shadow: none;">
-										<div class="livechatOverlaySmall" style=" display:none; z-index: 3; position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.34);">
-										</div>
-										<div id="livechatContainerChatUserName">
-											<div class="livechatContainerTop">
-												<span class="chat-input-label">Chatte görünecek takma isim</span>
-											</div>
-											<input id="livechatInputChatUserName" type="text">
-											<div class="blue_button" id="livechatButtonChatUserName">
-												<div class="blue_button_text noselect">
-													Kaydet
-												</div>
-											</div>
-										</div>
-										<div id="livechatContainerChatContent">
-											<div id="livechatChatContent" style="text-shadow: none;"></div>
-										</div>
-									</div>
-									<div id="livechatContainerChatControls" style="text-shadow: none;">
-										<div style="margin-bottom: 5px; text-shadow: none;">
-											<input id="livechatInputChat" placeholder="...." type="text">
-											<div class="live-chat-button-wrapper">
-												<div id="livechatButtonChat">
-													<div class="blue_button_text noselect">
-														Gönder
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>						
-						</div>
-					</div>
-				</div>
-							<div class="comments-wrapper col-md-6">
-				<div class="comments-wrapper-inner panel-box-wrapper same-height-bottom-panel">		
-					<div class="panel-overlay"></div>
-					<div class="panel-content">
-						<div class="panel-title">
-							<h2>Son Yorumlar</h2>
-						</div>	
-						<form action="#" class="comments-section-form">
-		<fieldset>
-			<section>
-				<label class="input comment-user-img-wrapp"></label>
-				<div class="comment-wrapper">
-					<label class="input">
-						<span class="comment-username" id="username1"></span><span class="timePosted" id="timePosted1"></span>
-						<span class="comments" id="comment1"></span>														
-					</label>
-				</div>
-				<label class="input"></label>
-			</section>
-		</fieldset>
-		<fieldset>
-			<section>
-				<label class="input comment-user-img-wrapp"></label>
-				<div class="comment-wrapper">
-					<label class="input">
-						<span class="comment-username" id="username2"></span><span class="timePosted" id="timePosted2"></span>
-						<span class="comments" id="comment2"></span>														
-					</label>
-				</div>
-				<label class="input"></label>
-			</section>
-		</fieldset>
-		<fieldset>
-			<section>
-				<label class="input comment-user-img-wrapp"></label>
-				<div class="comment-wrapper">
-					<label class="input">
-						<span class="comment-username" id="username3"></span><span class="timePosted" id="timePosted3"></span>
-						<span class="comments" id="comment3"></span>														
-					</label>
-				</div>
-				<label class="input"></label>
-			</section>
-		</fieldset>			
-		<div class="add-new-comment-wrapp">
-			<h4>Yorum yaz</h4>
-			<section>
-				<label class="input" id="commentUsernameLabel">						
-					<input id="commentUsername" placeholder="Ad" type="text">
-				</label>
-			</section>
-			<section>
-				<label class="textarea" id="commentCommentLabel">						
-					<textarea id="commentComment" rows="3" placeholder="Mesaj"></textarea>
-				</label>
-				<div class="post-new-comment-button-wrapp">
-					<div class="post-new-comment-button-inner-wrapp">
-					<a class="button-style-1 small" href="javascript:void(0)">Gönder</a>
-					</div>
-				</div>
-				<div class="shake-wrapper-2"><p class="nocommentsfornoobs"><i class="fa fa-info-circle" aria-hidden="true"></i>Yalnızca hileyi yaptıktan sonra yorum yapabilirsin.</p></div>
-			</section>
-		</div>
-	</form>					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-<!--<div class="recent-activity-wrapper col-sm-12">
-				<div class="recent-activity-inner panel-box-wrapper same-height-top-panel">	
-					<div class="panel-overlay"></div>
-					<div class="panel-content">
-						<div class="panel-title">
-						
-
-						</div>
-					</div>
-				</div>
-			</div>		-->
-		<footer style="margin-top: 25px">
-			<div class="policy-links"><!--
-				<a class="popup-contact popup-link" href="#contact-us">İletişim</a><span class="pp-sep"> |</span>
-				<a class="popup-tos popup-link" href="#terms-of-service">Terms of Use</a><span class="pp-sep"> |</span>
-				<a class="popup-pp popup-link" href="#privacy-policy">Privacy Policy</a>-->
-			</div>
-			<p>© Copyright All rights reserved.</p>
-		
-				</footer>
-		<div id="terms-of-service" class="tos-popup-wrapper popup-wrapper mfp-hide">
-			<h1>Terms of service</h1>
-
- 
-		</div>
-
-		<div id="privacy-policy" class="pp-popup-wrapper popup-wrapper mfp-hide">
-			<h1>Privacy policy</h1>
-
-
-		</div>
-			<div id="contact-us" class="contact-popup-wrapper popup-wrapper mfp-hide">
-				<h1>Bize Mesaj Gönder</h1>
-				<div class="contact-form-wrapper">
-					<form role="form" id="contactForm" data-toggle="validator" class="shake">
-						<div class="row">
-							<div class="form-group col-sm-6">
-								<label for="name" class="h4">Ad</label>
-								<input type="text" class="form-control" id="name" placeholder="Ad" required="" data-error="Lütfen adınızı girin.">
-								<div class="help-block with-errors"></div>
-							</div>
-							<div class="form-group col-sm-6">
-								<label for="email" class="h4">E-posta</label>
-								<input type="email" class="form-control" id="email" placeholder="E-posta" required="" data-error="Lütfen e-postanızı girin.">
-								<div class="help-block with-errors"></div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="message" class="h4 ">Mesaj</label>
-							<textarea id="message" class="form-control" rows="5" placeholder="Mesaj" required="" data-error="Lütfen mesajınızı girin.."></textarea>
-							<div class="help-block with-errors"></div>
-						</div>
-						<button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Gönder</button>
-						<div id="msgSubmit" class="h3 text-center hidden"></div>
-						<div class="clearfix"></div>
-					</form>
-				</div>
-			</div>
-			<!-- JavaScript/jQuery -->
-			<script type="text/javascript">
-				window.onload = function() {
-					var webService = "http://www.jsonip.com/json";
-					var script = document.createElement("script");
-					script.type = "text/javascript";
-					script.src = webService + "?callback=MyIP";
-					document.getElementsByTagName("head")[0].appendChild(script);
-				};
-
-				function MyIP(response) {
-					document.getElementById("ip").innerHTML = response.ip;
-				}
-
-
-        
-        // online stats
-        var eenum = 473;
-        var ee;
-
-        function dis_num2() {
-        	document.getElementById("online").innerHTML = eenum;
-        	var randWay = Math.floor(Math.random() * 10 + 1);
-        	if (randWay <= 5) {
-        		eenum = eenum + Math.floor(Math.random() * 10 + 1);;
-        	} else {
-        		eenum = eenum - Math.floor(Math.random() * 10 + 1);;
-        	}
-        	ee = setTimeout("dis_num2()", 1000);
-        }
-        dis_num2();
-
-
-        document.getElementById("para1").innerHTML = formatAMPM();
-
-        function formatAMPM() {
-        	var d = new Date(),
-
-        	hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
-        	ampm = d.getHours() >= 12 ? 'pm' : 'am',
-        	months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        	days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        	return months[d.getMonth()] + ' ' + d.getDate() + ' ' + d.getFullYear() + ' ';
-        }
-    </script>
-
-    <script>
-function tarihSaat() {
-    var date = new Date().toLocaleString();
-    document.getElementById("zaman").innerHTML = date;
-}
-setInterval(tarihSaat, 1000); 
-
-
-</script> 
-
-
-    <script type="text/javascript" src="images/jquery.min.js"></script>	
-    <script src="images/jquery-ui.min.js" type="text/javascript"></script>	
-    <script type="text/javascript" src="images/fancyselect.js"></script>
-    <script type="text/javascript" src="images/jquery.countto.js"></script>
-    <script type="text/javascript" src="images/sweetalert2.min.html"></script>
-    <script type="text/javascript" src="images/validator.min.js"></script>
-    <script type="text/javascript" src="images/com.js"></script>
-    <script type="text/javascript" src="images/form-scripts.js"></script>
-    <script type="text/javascript" src="images/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="images/sticky.js"></script>
-    <script type="text/javascript" src="images/main.js"></script>
-    <script type="text/javascript" src="ludy-script.html"></script>
-
+    <header>
+        <div class="branding-wrapper">
+            <img class="logo-img" src="images/logo.png" alt="Logo">
+        </div>
+    </header>
+    <div class="main-wrapper">        
+        <div class="row">
+            <div class="generator-wrapper col-sm-12">        
+                <div class="generator-wrapper-inner panel-box-wrapper same-height-top-panel">
+                    <div class="generator-status-panel-wrapper">
+                        <div class="status-wrapper">
+                            <span class="status-label hide-first">Son güncelleme:</span> 
+                            <span id="zaman" class="status-highlighted hide-first"></span>
+                            <span class="status-separator hide-first">|</span>
+                            <span class="status-label">Hile durumu:</span> 
+                            <button><span class="status status-highlighted server-status">Aktif</span></button>
+                            <span class="status-separator">|</span>
+                            <span class="stats">
+                                <span class="status-label">Aktif kullanıcı:</span> 
+                                <span id="online" class="status-highlighted"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-overlay"></div>
+                    <div id="account-information-wrapper" class="account-information-wrapper">                        
+                        <div class="account-information-inner-wrapper">
+                            <div id="close-account-information-wrapper" class="close-account-information-wrapper"><i class="fa fa-times" aria-hidden="true"></i></div>
+                            <h4>Hesap Bilgileri</h4>
+                            <div class="account-info-fields-wrapper">
+                                <div class="account-username-wrapper">
+                                    <label class="generator-input-label" for="account-username">Kullanıcı Adı veya ID</label>
+                                    <input type="text" id="account-username" class="generator-input account-input" placeholder="Kullanıcı Adı veya ID">
+                                </div>    
+                                <div class="account-platform-wrapper">
+                                    <label class="generator-input-label" for="account-platform">Platform:</label>
+                                    <select id="account-platform" class="generator-input f-s">
+                                        <option value="Tümü">Tümü</option>            
+                                        <option value="Android">Android</option>
+                                        <option value="iOS">iOS</option>
+                                        <option value="PC">PC</option>        
+                                    </select>
+                                </div>        
+                            </div>
+                            <div class="generator-button-wrapper">
+                                <div class="generator-button-inner-wrapper second-step-inner-wrapper">
+                                    <div class="generator-button-overlay"></div>
+                                    <a id="second-step-button" class="generator-button second-step-button"><span class="generator-button-text">OK</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="row">
+                            <div class="col-md-12">    
+                                <div class="generator-header">
+                                    <h1>Brawl Stars Elmas Hilesi 2024</h1>
+                                </div>        
+                            </div>
+                        </div>                        
+                        <div id="resources-select-wrapper" class="resources-select-wrapper">
+                            <div class="single-resource-wrapper row">
+                                <div class="gold-select-wrapper">
+                                    <div class="col-xs-1 no-padding-right responsive-button-wrapper">
+                                        <div class="value-button-wrapper">    
+                                            <div id="decrease-gold" class="decrease-button value-button">-</div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="col-xs-10 responsive-value-wrapper">
+                                        <h3 class="resources-title">Elmas</h3>
+                                        <div id="gold-amount-wrapper" class="selected-amount-wrapper">
+                                            <img class="resource-img" style="top:13px" src="images/elmas.png" alt="Elmas">
+                                            <div id="gold-amount" class="selected-amount-value">1000</div>
+                                            <div class="max-amount max-amount-coins">MAX</div>
+                                        </div>    
+                                        <div id="progressBar" class="gold-loadbar"><div></div></div>
+                                    </div>
+                                    <div class="col-xs-1 no-padding-left responsive-button-wrapper">
+                                        <div class="value-button-wrapper">    
+                                            <div id="increase-gold" class="increase-button value-button">+</div>
+                                        </div>    
+                                    </div>    
+                                </div>                
+                            </div>
+                            <div class="single-resource-wrapper row">
+                                <div class="gems-select-wrapper">
+                                    <div class="col-xs-1 responsive-button-wrapper no-padding-right">
+                                        <div class="value-button-wrapper">    
+                                            <div id="decrease-gems" class="decrease-button value-button">-</div>    
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10 responsive-value-wrapper">
+                                        <h3 class="resources-title">Altın</h3>
+                                        <div id="gems-amount-wrapper" class="selected-amount-wrapper">
+                                            <img class="resource-img" style="top:13px" src="images/altin.png" alt="Altın">
+                                            <div id="gems-amount" class="selected-amount-value">1000</div> 
+                                            <div class="max-amount max-amount-points">MAX</div>
+                                        </div>    
+                                        <div id="progressBarGems" class="gems-loadbar"><div></div></div>
+                                    </div>
+                                    <div class="col-xs-1 no-padding-left responsive-button-wrapper">    
+                                        <div class="value-button-wrapper">    
+                                            <div id="increase-gems" class="increase-button value-button">+</div>
+                                        </div>
+                                    </div>    
+                                </div>                
+                            </div>
+                            <div class="row">
+                                <div style="text-align: center;" class="col-md-12 col-sm-12">
+                                    <div class="switch-wrapper">
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+                                            <label class="onoffswitch-label" for="myonoffswitch">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </div>
+                                        <p>Anti-Ban koruması</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="panel-box-wrapper">
+                                        <div class="loading-wrapper">
+                                            <p><span style="font-weight: bold">Adım 1:</span> Güvenlik testi ve profil kontrolü</p>
+                                            <br><br>
+                                            <div class="loading-bar-wrapper">
+                                                <div class="loading-bar"></div>
+                                            </div>
+                                            <div class="loading-bar-timer-wrapper">
+                                                <div id="loading-timer"></div>
+                                            </div>
+                                            <p class="loading-bar-info">Lütfen yukarıdaki işlemi tamamlayın.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>                
+                    </div>                
+                </div>
+            </div>        
+        </div>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="images/footer-logo.png" alt="Footer Logo">
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2024 Brawl Stars Hilesi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
