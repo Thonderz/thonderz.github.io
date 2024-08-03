@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Themed Page</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
             color: #fff;
             margin: 0;
             padding: 0;
@@ -17,17 +19,22 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            overflow: hidden;
         }
         header {
             background: #111;
             width: 100%;
             padding: 1em 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
             color: #e74c3c;
+            animation: fadeInDown 2s;
         }
         main {
             flex: 1;
@@ -36,15 +43,7 @@
             align-items: center;
             justify-content: center;
             padding: 2em;
-        }
-        main h2 {
-            margin-bottom: 1em;
-            font-size: 2em;
-            color: #f39c12;
-        }
-        main p {
-            font-size: 1.2em;
-            max-width: 600px;
+            animation: fadeIn 3s;
         }
         footer {
             background: #111;
@@ -54,11 +53,63 @@
             bottom: 0;
             text-align: center;
             box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
         }
         footer p {
             margin: 0;
             font-size: 1em;
             color: #e74c3c;
+            animation: fadeInUp 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .particle {
+            position: absolute;
+            background: #e74c3c;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: moveParticle 10s infinite;
+        }
+        @keyframes moveParticle {
+            from {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate3d(calc(100vw - 50px), calc(100vh - 50px), 0);
+                opacity: 0;
+            }
+        }
+        .particle:nth-child(2) {
+            background: #f39c12;
+            animation-duration: 12s;
+            animation-delay: -2s;
+        }
+        .particle:nth-child(3) {
+            background: #8e44ad;
+            animation-duration: 8s;
+            animation-delay: -4s;
+        }
+        .particle:nth-child(4) {
+            background: #3498db;
+            animation-duration: 6s;
+            animation-delay: -6s;
+        }
+        .particle:nth-child(5) {
+            background: #2ecc71;
+            animation-duration: 14s;
+            animation-delay: -8s;
         }
     </style>
 </head>
@@ -66,12 +117,14 @@
     <header>
         <h1>Game Zone</h1>
     </header>
-    <main>
-        <h2>Welcome to the Ultimate Gaming Experience</h2>
-        <p>Explore our latest games, join the community, and stay up-to-date with the newest trends in the gaming world. Level up your gaming skills with us!</p>
-    </main>
+    <main></main>
     <footer>
         <p>&copy; 2024 Game Zone. All rights reserved.</p>
     </footer>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </body>
 </html>
