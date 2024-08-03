@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Games</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        header {
+            background: #111;
+            width: 100%;
+            padding: 1em 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #e74c3c;
+            animation: fadeInDown 2s;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2em;
+            animation: fadeIn 3s;
+        }
+        footer {
+            background: #111;
+            width: 100%;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1em;
+            color: #e74c3c;
+            animation: fadeInUp 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Action Games</h1>
+    </header>
+    <main>
+        <!-- Action games content goes here -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Game Zone. All rights reserved.</p>
+    </footer>
+</body>
+</html>
