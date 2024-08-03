@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brawl Stars Elmas Hilesi 2024</title>
     <style>
         body {
-            font-family: 'Bree Serif', serif;
-            background-color: #000000;
-            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #000000;
+            color: #FFFFFF;
+            overflow-x: hidden;
         }
 
         header, footer {
             background-color: #FF0000; /* Kırmızı renk */
+            color: #FFFFFF;
             text-align: center;
             padding: 20px;
         }
 
-        .logo-img {
-            width: 150px;
+        header img, footer img {
+            max-width: 150px;
+            height: auto;
         }
 
-        .footer-logo img {
-            width: 100px;
-        }
-
-        .generator-wrapper {
+        .main-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            max-width: 800px;
+            padding: 20px;
         }
 
         .panel-box-wrapper {
             background: linear-gradient(to right, #FF0000, #FFA500); /* Brawl Stars renkleri */
             padding: 20px;
             border-radius: 10px;
-        }
-
-        .status-wrapper {
-            display: flex;
-            justify-content: space-between;
+            margin-bottom: 20px;
         }
 
         .generator-button {
@@ -54,6 +50,8 @@
             border-radius: 5px;
             text-decoration: none;
             text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
         .generator-button:hover {
@@ -72,19 +70,29 @@
             width: 20px;
         }
 
-        .gold-loadbar, .gems-loadbar {
+        .loadbar {
             width: 100%;
             background: #FFA500;
             height: 10px;
             border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loadbar div {
+            height: 100%;
+            background: #FF0000;
+            width: 0;
+            transition: width 0.5s ease;
         }
 
         .generator-input {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #FFA500;
             margin-bottom: 10px;
+            box-sizing: border-box;
         }
 
         .switch-wrapper {
@@ -95,6 +103,7 @@
 
         .onoffswitch-label {
             background: #FF0000; /* Kırmızı renk */
+            border-radius: 20px;
         }
 
         .onoffswitch-switch {
@@ -102,164 +111,57 @@
         }
 
         .footer-text {
-            color: #FFFFFF;
+            margin: 10px 0;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="branding-wrapper">
-            <img class="logo-img" src="images/logo.png" alt="Logo">
-        </div>
+        <img src="images/logo.png" alt="Logo">
     </header>
-    <div class="main-wrapper">        
-        <div class="row">
-            <div class="generator-wrapper col-sm-12">        
-                <div class="generator-wrapper-inner panel-box-wrapper same-height-top-panel">
-                    <div class="generator-status-panel-wrapper">
-                        <div class="status-wrapper">
-                            <span class="status-label hide-first">Son güncelleme:</span> 
-                            <span id="zaman" class="status-highlighted hide-first"></span>
-                            <span class="status-separator hide-first">|</span>
-                            <span class="status-label">Hile durumu:</span> 
-                            <button><span class="status status-highlighted server-status">Aktif</span></button>
-                            <span class="status-separator">|</span>
-                            <span class="stats">
-                                <span class="status-label">Aktif kullanıcı:</span> 
-                                <span id="online" class="status-highlighted"></span>
-                            </span>
-                        </div>
+    <div class="main-wrapper">
+        <div class="panel-box-wrapper">
+            <h1>Brawl Stars Elmas Hilesi 2024</h1>
+            <div class="resources-select-wrapper">
+                <div class="single-resource-wrapper">
+                    <h3 class="resources-title">Elmas</h3>
+                    <div class="selected-amount-wrapper">
+                        <img class="resource-img" src="images/elmas.png" alt="Elmas">
+                        <div id="gold-amount" class="selected-amount-value">1000</div>
+                        <div class="max-amount">MAX</div>
                     </div>
-                    <div class="panel-overlay"></div>
-                    <div id="account-information-wrapper" class="account-information-wrapper">                        
-                        <div class="account-information-inner-wrapper">
-                            <div id="close-account-information-wrapper" class="close-account-information-wrapper"><i class="fa fa-times" aria-hidden="true"></i></div>
-                            <h4>Hesap Bilgileri</h4>
-                            <div class="account-info-fields-wrapper">
-                                <div class="account-username-wrapper">
-                                    <label class="generator-input-label" for="account-username">Kullanıcı Adı veya ID</label>
-                                    <input type="text" id="account-username" class="generator-input account-input" placeholder="Kullanıcı Adı veya ID">
-                                </div>    
-                                <div class="account-platform-wrapper">
-                                    <label class="generator-input-label" for="account-platform">Platform:</label>
-                                    <select id="account-platform" class="generator-input f-s">
-                                        <option value="Tümü">Tümü</option>            
-                                        <option value="Android">Android</option>
-                                        <option value="iOS">iOS</option>
-                                        <option value="PC">PC</option>        
-                                    </select>
-                                </div>        
-                            </div>
-                            <div class="generator-button-wrapper">
-                                <div class="generator-button-inner-wrapper second-step-inner-wrapper">
-                                    <div class="generator-button-overlay"></div>
-                                    <a id="second-step-button" class="generator-button second-step-button"><span class="generator-button-text">OK</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content">
-                        <div class="row">
-                            <div class="col-md-12">    
-                                <div class="generator-header">
-                                    <h1>Brawl Stars Elmas Hilesi 2024</h1>
-                                </div>        
-                            </div>
-                        </div>                        
-                        <div id="resources-select-wrapper" class="resources-select-wrapper">
-                            <div class="single-resource-wrapper row">
-                                <div class="gold-select-wrapper">
-                                    <div class="col-xs-1 no-padding-right responsive-button-wrapper">
-                                        <div class="value-button-wrapper">    
-                                            <div id="decrease-gold" class="decrease-button value-button">-</div>
-                                        </div>                                        
-                                    </div>
-                                    <div class="col-xs-10 responsive-value-wrapper">
-                                        <h3 class="resources-title">Elmas</h3>
-                                        <div id="gold-amount-wrapper" class="selected-amount-wrapper">
-                                            <img class="resource-img" style="top:13px" src="images/elmas.png" alt="Elmas">
-                                            <div id="gold-amount" class="selected-amount-value">1000</div>
-                                            <div class="max-amount max-amount-coins">MAX</div>
-                                        </div>    
-                                        <div id="progressBar" class="gold-loadbar"><div></div></div>
-                                    </div>
-                                    <div class="col-xs-1 no-padding-left responsive-button-wrapper">
-                                        <div class="value-button-wrapper">    
-                                            <div id="increase-gold" class="increase-button value-button">+</div>
-                                        </div>    
-                                    </div>    
-                                </div>                
-                            </div>
-                            <div class="single-resource-wrapper row">
-                                <div class="gems-select-wrapper">
-                                    <div class="col-xs-1 responsive-button-wrapper no-padding-right">
-                                        <div class="value-button-wrapper">    
-                                            <div id="decrease-gems" class="decrease-button value-button">-</div>    
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-10 responsive-value-wrapper">
-                                        <h3 class="resources-title">Altın</h3>
-                                        <div id="gems-amount-wrapper" class="selected-amount-wrapper">
-                                            <img class="resource-img" style="top:13px" src="images/altin.png" alt="Altın">
-                                            <div id="gems-amount" class="selected-amount-value">1000</div> 
-                                            <div class="max-amount max-amount-points">MAX</div>
-                                        </div>    
-                                        <div id="progressBarGems" class="gems-loadbar"><div></div></div>
-                                    </div>
-                                    <div class="col-xs-1 no-padding-left responsive-button-wrapper">    
-                                        <div class="value-button-wrapper">    
-                                            <div id="increase-gems" class="increase-button value-button">+</div>
-                                        </div>
-                                    </div>    
-                                </div>                
-                            </div>
-                            <div class="row">
-                                <div style="text-align: center;" class="col-md-12 col-sm-12">
-                                    <div class="switch-wrapper">
-                                        <div class="onoffswitch">
-                                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
-                                            <label class="onoffswitch-label" for="myonoffswitch">
-                                                <span class="onoffswitch-inner"></span>
-                                                <span class="onoffswitch-switch"></span>
-                                            </label>
-                                        </div>
-                                        <p>Anti-Ban koruması</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="panel-box-wrapper">
-                                        <div class="loading-wrapper">
-                                            <p><span style="font-weight: bold">Adım 1:</span> Güvenlik testi ve profil kontrolü</p>
-                                            <br><br>
-                                            <div class="loading-bar-wrapper">
-                                                <div class="loading-bar"></div>
-                                            </div>
-                                            <div class="loading-bar-timer-wrapper">
-                                                <div id="loading-timer"></div>
-                                            </div>
-                                            <p class="loading-bar-info">Lütfen yukarıdaki işlemi tamamlayın.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                    
-                        </div>                
-                    </div>                
+                    <div id="progressBar" class="loadbar"><div></div></div>
                 </div>
-            </div>        
+                <div class="single-resource-wrapper">
+                    <h3 class="resources-title">Altın</h3>
+                    <div class="selected-amount-wrapper">
+                        <img class="resource-img" src="images/altin.png" alt="Altın">
+                        <div id="gems-amount" class="selected-amount-value">1000</div>
+                        <div class="max-amount">MAX</div>
+                    </div>
+                    <div id="progressBarGems" class="loadbar"><div></div></div>
+                </div>
+                <div class="switch-wrapper">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                    <p>Anti-Ban koruması</p>
+                </div>
+                <button class="generator-button" id="generate-button">Elmas Gönder</button>
+            </div>
         </div>
     </div>
     <footer>
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <img src="images/footer-logo.png" alt="Footer Logo">
-            </div>
-            <div class="footer-text">
-                <p>&copy; 2024 Brawl Stars Hilesi. Tüm hakları saklıdır.</p>
-            </div>
+        <img src="images/footer-logo.png" alt="Footer Logo">
+        <div class="footer-text">
+            <p>&copy; 2024 Brawl Stars Hilesi. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 </body>
+
 </html>
