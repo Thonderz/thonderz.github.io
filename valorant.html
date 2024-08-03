@@ -278,7 +278,7 @@
                     <option value="7300">7300 VP</option>
                 </select>
             </div>
-            <button type="submit" id="submitButton">Gönder</button>
+            <button type="submit" id="submitButton" disabled>Gönder</button>
             <div id="message" class="form-message"></div>
         </form>
         <div class="timer-container">
@@ -304,7 +304,7 @@
     </div>
     <div id="alert" class="alert"></div>
     <div class="footer">
-        <p>© 2024 Valorant VP Hilesi. Tüm hakları saklıdır. Author:Thonderz <a href="#">İletişim</a> | <a href="#">Gizlilik Politikası</a></p>
+        <p>© 2024 Valorant VP Hilesi. Tüm hakları saklıdır. <a href="#">İletişim</a> | <a href="#">Gizlilik Politikası</a></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
@@ -346,8 +346,11 @@
             isTimerRunning = true;
             const timerBar = document.getElementById('timerProgress');
             const timerText = document.getElementById('timerText');
+            const submitButton = document.getElementById('submitButton');
             let startTime = Date.now();
-            let endTime = startTime + 60000; // 1 dakika
+            let endTime = startTime + cooldownTime; // 1 dakika
+
+            submitButton.disabled = true;
 
             const interval = setInterval(() => {
                 const now = Date.now();
@@ -358,6 +361,7 @@
                     timerBar.style.width = '0';
                     timerText.textContent = 'Kalan Süre: 00:00';
                     isTimerRunning = false;
+                    submitButton.disabled = false; // Butonu aktif hale getir
                     return;
                 }
 
@@ -365,7 +369,7 @@
                 const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
 
                 timerText.textContent = `Kalan Süre: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                timerBar.style.width = `${(100 - (remainingTime / 60000) * 100)}%`;
+                timerBar.style.width = `${(100 - (remainingTime / cooldownTime) * 100)}%`;
             }, 1000);
         }
 
