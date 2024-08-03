@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #0f0f0f;
             color: #fff;
             display: flex;
@@ -26,7 +26,7 @@
             padding: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             position: relative;
-            z-index: 1; /* Partiküllerin altında kalmasını sağlar */
+            z-index: 1;
         }
 
         h1 {
@@ -150,17 +150,18 @@
 
         .timer-bar {
             width: 100%;
-            height: 25px;
-            background: #333; /* Arka plan rengi */
+            height: 15px; /* Küçültüldü */
+            background: #333;
             border-radius: 5px;
             overflow: hidden;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
             position: relative;
+            display: none; /* Başlangıçta gizli */
         }
 
         .timer-progress {
             height: 100%;
-            background: linear-gradient(to right, #ff4655, #e02d3e); /* Valorant renkleri */
+            background: linear-gradient(to right, #ff4655, #e02d3e);
             width: 0;
             transition: width 1s linear;
             position: absolute;
@@ -171,7 +172,8 @@
         .timer-text {
             text-align: center;
             margin-top: 5px;
-            font-size: 18px;
+            font-size: 14px; /* Küçültüldü */
+            display: none; /* Başlangıçta gizli */
         }
 
         #particles-js {
@@ -183,7 +185,6 @@
             z-index: 0;
         }
 
-        /* Alert Styles */
         .alert {
             position: fixed;
             top: 20px;
@@ -219,11 +220,31 @@
             to { opacity: 0; }
         }
 
-        /* Footer Styles */
+        /* Footer */
         .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             text-align: center;
-            margin-top: 20px;
             color: #ccc;
+            font-size: 14px;
+            padding: 10px;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: #ff4655;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -267,7 +288,7 @@
             <div id="timerText" class="timer-text">Kalan Süre: 00:00</div>
         </div>
         <div class="code-section">
-            <h2>Kodunuz</h2>
+            <h2>Bilgi Ekranı</h2>
             <table class="code-table">
                 <thead>
                     <tr>
@@ -281,178 +302,253 @@
                 </tbody>
             </table>
         </div>
-        <div id="alert" class="alert"></div>
-        <div class="footer">
-            &copy; 2024 Valorant VP Hilesi. Tüm hakları saklıdır.
-        </div>
+    </div>
+    <div id="alert" class="alert"></div>
+    <div class="footer">
+        <p>Developer: <a href="https://www.youtube.com/@thonderz" target="_blank">Thonderz</a> Web Site: <a href="https://thonderz.github.io" target="_blank">Github</a></p> 
+        <p><a href="https://thonderz.github.io" target="_blank">Gizlilik Politikası</a>        /      <a href="https://thonderz.github.io" target="_blank">Kullanım Şartları</a></p>
+        <p class="copyright">© 2024 Valorant VP Hilesi Tüm Hakları Saklıdır.</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        let lastSubmissionTime = 0;
-        const cooldownTime = 3600000; // 1 saat (1 saat = 3600000 ms)
+        const submitButton = document.getElementById('submitButton');
+        const timerText = document.getElementById('timerText');
+        const timerProgress = document.getElementById('timerProgress');
+        const message = document.getElementById('message');
+        const codeList = document.getElementById('codeList');
+        const alertBox = document.getElementById('alert');
 
-        function updateTimer() {
-            const currentTime = Date.now();
-            const elapsedTime = currentTime - lastSubmissionTime;
+        let timer;
+        let isCooldown = false;
 
-            if (elapsedTime < cooldownTime) {
-                const remainingTime = cooldownTime - elapsedTime;
-                const minutes = Math.floor(remainingTime / 60000);
-                const seconds = Math.floor((remainingTime % 60000) / 1000);
-                document.getElementById('timerText').innerText = `Kalan Süre: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                document.getElementById('timerProgress').style.width = `${(elapsedTime / cooldownTime) * 100}%`;
-                document.getElementById('submitButton').disabled = true;
-                setTimeout(updateTimer, 1000);
-            } else {
-                document.getElementById('timerText').innerText = 'Süre doldu';
-                document.getElementById('timerProgress').style.width = '100%';
-                document.getElementById('submitButton').disabled = false;
+        function startTimer() {
+            let time = 30; // 30 saniye
+            submitButton.disabled = true;
+            document.getElementById('timerBar').style.display = 'block'; // Göster
+            timerText.style.display = 'block'; // Göster
+            timerProgress.style.width = '100%';
+
+            timer = setInterval(() => {
+                time--;
+                const minutes = Math.floor(time / 60);
+                const seconds = time % 60;
+                timerText.textContent = `Kalan Süre: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timerProgress.style.width = `${(time / 30) * 100}%`;
+
+                if (time <= 0) {
+                    clearInterval(timer);
+                    timerText.textContent = 'Kalan Süre: 00:00';
+                    submitButton.disabled = false;
+                    addCode();
+                }
+            }, 1000);
+        }
+
+        function generateRandomCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = 'RA-';
+            for (let i = 0; i < 16; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        function addCode() {
+            const username = document.getElementById('username').value;
+            const amount = document.getElementById('amount').value;
+            const code = generateRandomCode(); // Rastgele VP kodu
+
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${username}</td><td>${amount} VP</td><td>${code}</td>`;
+            codeList.appendChild(row);
+
+            // Verileri localStorage'a kaydet
+            saveData();
+
+            message.textContent = 'Başarıyla Gönderildi';
+            setTimeout(() => {
+                message.textContent = '';
+            }, 3000);
+        }
+
+        function saveData() {
+            const username = document.getElementById('username').value;
+            const data = {
+                username: username,
+                entries: []
+            };
+
+            codeList.querySelectorAll('tr').forEach(row => {
+                const cells = row.querySelectorAll('td');
+                data.entries.push({
+                    amount: cells[1].textContent,
+                    code: cells[2].textContent
+                });
+            });
+
+            localStorage.setItem(username, JSON.stringify(data));
+            localStorage.setItem(`${username}_lastSubmission`, Date.now()); // Son gönderim zamanını kaydet
+        }
+
+        function loadData() {
+            const username = document.getElementById('username').value;
+            const data = JSON.parse(localStorage.getItem(username));
+            const lastSubmission = localStorage.getItem(`${username}_lastSubmission`);
+
+            if (data && data.entries) {
+                data.entries.forEach(entry => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${username}</td><td>${entry.amount}</td><td>${entry.code}</td>`;
+                    codeList.appendChild(row);
+                });
+            }
+
+            if (lastSubmission) {
+                const currentTime = Date.now();
+                const cooldownTime = 3600000; // 1 saat
+                if (currentTime - lastSubmission < cooldownTime) {
+                    isCooldown = true;
+                    const remainingTime = cooldownTime - (currentTime - lastSubmission);
+                    startTimer(remainingTime);
+                }
             }
         }
 
-        document.getElementById('vpForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const currentTime = Date.now();
-            lastSubmissionTime = currentTime;
-            updateTimer();
-
-            // Kodun tabloya eklenmesi
+        function resetData() {
             const username = document.getElementById('username').value;
-            const platform = document.getElementById('platform').value;
-            const amount = document.getElementById('amount').value;
-            const code = generateCode();
+            localStorage.removeItem(username);
+            localStorage.removeItem(`${username}_lastSubmission`);
+            codeList.innerHTML = '';
+        }
 
-            const table = document.getElementById('codeList');
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${username}</td>
-                <td>${amount}</td>
-                <td>${code}</td>
-            `;
-            table.appendChild(row);
+        document.getElementById('vpForm').addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            // Gönderim mesajı
-            const message = document.getElementById('message');
-            message.innerText = 'Başarıyla gönderildi!';
+            if (isCooldown) {
+                alertBox.textContent = 'Hakkınız Doldu, 1 saat sonra tekrar deneyin';
+                alertBox.classList.add('show');
+                setTimeout(() => alertBox.classList.remove('show'), 3000);
+                return;
+            }
+
+            isCooldown = true;
+            startTimer();
+
+            // 1 saat sonra tekrar aktif hale getir
             setTimeout(() => {
-                message.innerText = '';
-            }, 3000);
+                isCooldown = false;
+            }, 3600000); // 1 saat
         });
 
-        function generateCode() {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let result = 'RA-';
-            for (let i = 0; i < 10; i++) {
-                result += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            return result;
-        }
+        // Sayfa yüklendiğinde verileri yükle
+        loadData();
 
+        // Partiküller
         particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 100,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
                     }
                 },
-                "color": {
-                    "value": "#ff4655"
+                color: {
+                    value: "#ff4655"
                 },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000"
+                    },
+                    polygon: {
+                        nb_sides: 5
                     }
                 },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
                     }
                 },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
                     }
                 },
-                "line_linked": {
-                    "enable": false,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff4655",
+                    opacity: 0.4,
+                    width: 1
                 },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
                     }
                 }
             },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
                     },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
+                    onclick: {
+                        enable: true,
+                        mode: "push"
                     },
-                    "resize": true
+                    resize: true
                 },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 1
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1
                         }
                     },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
+                    bubble: {
+                        distance: 250,
+                        size: 0,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
                     },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
+                    repulse: {
+                        distance: 400,
+                        duration: 0.4
                     },
-                    "push": {
-                        "particles_nb": 4
+                    push: {
+                        particles_nb: 4
                     },
-                    "remove": {
-                        "particles_nb": 2
+                    remove: {
+                        particles_nb: 2
                     }
                 }
             },
-            "retina_detect": true
+            retina_detect: true
         });
-
-        // Sayacı başlatma
-        updateTimer();
     </script>
 </body>
-</html>
+</html>                                                                          
