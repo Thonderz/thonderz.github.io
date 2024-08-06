@@ -55,33 +55,35 @@
 
         /* Çalışıyoruz animasyonu */
         .working-container {
-            position: relative;
-            display: inline-block;
             margin-top: 20px;
         }
 
         .working {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
             color: #ff0;
             position: relative;
-            overflow: hidden;
             display: inline-block;
+            overflow: hidden;
+            letter-spacing: 2px;
         }
 
-        .working::after {
-            content: '...';
+        .working::before {
+            content: 'Çalışıyoruz';
             position: absolute;
-            left: 100%;
+            left: -100%;
             top: 0;
-            animation: blink 1.5s infinite step-start;
+            color: #0ff;
+            animation: slideIn 2s infinite;
         }
 
-        @keyframes blink {
+        @keyframes slideIn {
             0% {
-                left: 100%;
+                left: -100%;
             }
             50% {
                 left: 50%;
+                color: #ff0;
             }
             100% {
                 left: 100%;
@@ -115,7 +117,7 @@
         <p class="description">Bu sayfa üzerinde çalışıyoruz. Lütfen daha sonra tekrar kontrol edin.</p>
         
         <div class="working-container">
-            <span class="working">Çalışıyoruz</span>
+            <span class="working"></span>
             <!-- Yüklenme çubuğu -->
             <div class="loader"></div>
         </div>
