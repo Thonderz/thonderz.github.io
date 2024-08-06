@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opfin - Temel HTML Dersi</title>
+    <title>Opfin - HTML Geliştirici Dersi</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background: #f4f7f6;
+            background: #f5f6f7;
             color: #333;
         }
 
         header {
-            background: #343a40;
+            background: #282c34;
             color: #fff;
             padding: 1.5em 2em;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
             font-size: 2.5em;
+        }
+
+        nav {
+            margin: 1em 0;
         }
 
         nav ul {
@@ -33,7 +37,7 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            background: #495057;
+            background: #61dafb;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -43,7 +47,7 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: #282c34;
             text-decoration: none;
             padding: 15px 25px;
             display: block;
@@ -51,14 +55,14 @@
         }
 
         nav ul li a:hover {
-            background: #6c757d;
+            background: #21a1f1;
             color: #fff;
         }
 
         section {
             padding: 3em 2em;
             margin: 0 auto;
-            max-width: 1000px;
+            max-width: 900px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,24 +71,26 @@
 
         section h2 {
             margin-top: 0;
-            color: #343a40;
+            color: #61dafb;
             font-size: 2em;
         }
 
-        .code-container {
-            background: #f8f9fa;
+        .code-container, .output-container {
+            background: #282c34;
+            color: #abb2bf;
             padding: 1em;
             border-radius: 8px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #373d41;
             overflow-x: auto;
             white-space: nowrap;
+            margin-bottom: 1.5em;
         }
 
-        .code-container code {
+        .code-container code, .output-container code {
             display: block;
-            color: #d63384;
             font-family: 'Courier New', monospace;
-            font-size: 1.1em;
+            font-size: 1em;
+            line-height: 1.5;
         }
 
         .description {
@@ -96,13 +102,14 @@
         }
 
         footer {
-            background: #343a40;
+            background: #282c34;
             color: #fff;
             text-align: center;
             padding: 1em 2em;
             position: relative;
             bottom: 0;
             width: 100%;
+            border-top: 1px solid #373d41;
         }
 
         footer p {
@@ -130,25 +137,26 @@
 </head>
 <body>
     <header>
-        <h1>Opfin - Temel HTML Dersi</h1>
+        <h1>Opfin</h1>
         <nav>
             <ul>
                 <li><a href="#about">Ders İçeriği</a></li>
                 <li><a href="#example">Örnek Kod</a></li>
+                <li><a href="#output">Kod Çıktısı</a></li>
                 <li><a href="#contact">İletişim</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="about">
-        <h2>Ders İçeriği</h2>
-        <p>Bu ders, HTML (HyperText Markup Language) dilinin temellerini öğretir. HTML, web sayfalarını oluşturmak için kullanılan temel bir işaretleme dilidir.</p>
-        <p>Öğreneceğiniz konular:</p>
+        <h2>Temel HTML Kodu</h2>
+        <p>HTML (HyperText Markup Language) web sayfalarını yapılandırmak için kullanılan işaretleme dilidir. Bu bölüm, HTML'in temel yapı taşlarını ve kullanımlarını açıklar.</p>
         <div class="description">
             <ul>
-                <li>HTML'in Temel Yapısı</li>
-                <li>HTML Etiketleri ve Kullanım Alanları</li>
-                <li>Sayfa Yapısı ve İçerik Düzenleme</li>
+                <li><strong>&lt;!DOCTYPE html&gt;:</strong> HTML5 belgesi olduğunu belirtir.</li>
+                <li><strong>&lt;html lang="tr"&gt;:</strong> Sayfanın dilini Türkçe olarak belirler.</li>
+                <li><strong>&lt;head&gt;:</strong> Sayfanın başlık ve meta bilgilerini içerir.</li>
+                <li><strong>&lt;body&gt;:</strong> Sayfanın ana içeriğini barındırır.</li>
             </ul>
         </div>
     </section>
@@ -173,7 +181,20 @@
         </div>
     </section>
 
-  
+    <section id="output">
+        <h2>Kod Çıktısı</h2>
+        <div class="output-container">
+            <code>
+Merhaba Dünya!
+Bu, basit bir HTML sayfasıdır.
+            </code>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>İletişim</h2>
+        <p>Bize ulaşmak için <a href="mailto:info@opfin.com">info@opfin.com</a> adresine e-posta gönderebilirsiniz.</p>
+    </section>
 
     <footer>
         <p>&copy; 2024 Opfin. Tüm hakları saklıdır. | Opfin/Thonderz Tarafından Desteklenmektedir</p>
