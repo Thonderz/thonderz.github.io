@@ -1,1 +1,1 @@
-# thonderz.github.io
+# gamzecik.github.io
