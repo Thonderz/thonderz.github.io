@@ -1,107 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-   google.com, pub-3779161519741128, DIRECT, f08c47fec0942fa0
-   
-    <meta name="google-adsense-account" content="ca-pub-3779161519741128">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3779161519741128"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thonderz</title>
+    <title>Harbory - Ürün Detayı</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         body {
-            font-family: 'Press Start 2P', cursive;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
+            background: #f8f8f8;
+            color: #333;
+        }
+        .container {
             text-align: center;
-            overflow: hidden;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
         }
-        header {
-            background: #111;
-            width: 100%;
-            padding: 1em 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position: fixed;
-            top: 0;
-            z-index: 1000;
+        .container img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #e74c3c;
-            animation: fadeInDown 2s;
+        .container h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #444;
         }
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2em;
-            animation: fadeIn 3s;
+        .container p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
         }
-        footer {
-            background: #111;
-            width: 100%;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            text-align: center;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-        footer p {
-            margin: 0;
-            font-size: 1em;
-            color: #e74c3c;
-            animation: fadeInUp 2s;
-        }
-        a {
-            color: #e74c3c;
-            text-decoration: none;
-            font-size: 1.5em;
-            margin: 1em 0;
-            display: block;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #f39c12;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        .price {
+            font-size: 18px;
+            color: #e63946;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>THONDERZ</h1>
-    </header>
-    <main>
-        <a href="valorant.html">➢ Valorant VP Hilesi</a>
-         <a href="hakkımızda.html">➢ Hakkımızda</a>
-      <a href="comingsoon.html">➢ Çok Yakında!</a>
-       <a href="opfin.html">➢ Opfin/Yazılım</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 Thonderz. Tüm Hakları Saklıdır.</p>
-    </footer>
+    <div class="container">
+        <img src="urun.jpg" alt="Ürün Görseli">
+        <h1>Ürün Adı: Premium Laptop</h1>
+        <p>Yüksek performanslı, şık tasarıma sahip premium bir laptop.</p>
+        <p class="price">Fiyat: 20.000 TL</p>
+    </div>
 </body>
 </html>
